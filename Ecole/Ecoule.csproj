@@ -1,0 +1,431 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{76423C83-91DC-47FA-B203-4ADFA1393337}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ecoule</RootNamespace>
+    <AssemblyName>Ecoule</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44313</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>packages\Portable.BouncyCastle.1.8.9\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.barcodes, Version=7.2.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext7.7.2.2\lib\net461\itext.barcodes.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.commons, Version=7.2.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext7.commons.7.2.2\lib\net461\itext.commons.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.forms, Version=7.2.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext7.7.2.2\lib\net461\itext.forms.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.io, Version=7.2.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext7.7.2.2\lib\net461\itext.io.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.kernel, Version=7.2.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext7.7.2.2\lib\net461\itext.kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.layout, Version=7.2.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext7.7.2.2\lib\net461\itext.layout.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.pdfa, Version=7.2.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext7.7.2.2\lib\net461\itext.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.sign, Version=7.2.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext7.7.2.2\lib\net461\itext.sign.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.styledxmlparser, Version=7.2.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext7.7.2.2\lib\net461\itext.styledxmlparser.dll</HintPath>
+    </Reference>
+    <Reference Include="itext.svg, Version=7.2.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itext7.7.2.2\lib\net461\itext.svg.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.5.0.0\lib\net461\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Options.5.0.0\lib\net461\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.5.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\DB_Ecoule.mdf" />
+    <Content Include="App_Data\DB_Ecoule_log.ldf">
+      <DependentUpon>DB_Ecoule.mdf</DependentUpon>
+    </Content>
+    <Content Include="ContentExameProf.aspx" />
+    <Content Include="ContentModule.aspx" />
+    <Content Include="ContentPresenceProf.aspx" />
+    <Content Include="ContentSalle.aspx" />
+    <Content Include="ContentSeance.aspx" />
+    <Content Include="ContentSeanceProf.aspx" />
+    <Content Include="ContentSectionGroup.aspx" />
+    <Content Include="css\bootstrap-grid.css" />
+    <Content Include="css\bootstrap-grid.min.css" />
+    <Content Include="css\bootstrap-grid.rtl.css" />
+    <Content Include="css\bootstrap-grid.rtl.min.css" />
+    <Content Include="css\bootstrap-reboot.css" />
+    <Content Include="css\bootstrap-reboot.min.css" />
+    <Content Include="css\bootstrap-reboot.rtl.css" />
+    <Content Include="css\bootstrap-reboot.rtl.min.css" />
+    <Content Include="css\bootstrap-utilities.css" />
+    <Content Include="css\bootstrap-utilities.min.css" />
+    <Content Include="css\bootstrap-utilities.rtl.css" />
+    <Content Include="css\bootstrap-utilities.rtl.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\bootstrap.rtl.css" />
+    <Content Include="css\bootstrap.rtl.min.css" />
+    <Content Include="Home.aspx" />
+    <Content Include="icons\add.png" />
+    <Content Include="icons\delete1.png" />
+    <Content Include="icons\delete2.png" />
+    <Content Include="icons\delete3.png" />
+    <Content Include="icons\Download-Icon.png" />
+    <Content Include="icons\email.png" />
+    <Content Include="icons\enter.png" />
+    <Content Include="icons\hidden.png" />
+    <Content Include="icons\icons8-close-64.png" />
+    <Content Include="icons\icons8-download-24.png" />
+    <Content Include="icons\icons8-export-pdf-50.png" />
+    <Content Include="icons\icons8-group-64.png" />
+    <Content Include="icons\icons8-menu-48.png" />
+    <Content Include="icons\icons8-menu-49.png" />
+    <Content Include="icons\icons8-pdf-file-format-53.png" />
+    <Content Include="icons\icons8-refresh-32.png" />
+    <Content Include="icons\icons8-refresh-64.png" />
+    <Content Include="icons\icons8-refresh-80.png" />
+    <Content Include="icons\icons8-students-64.png" />
+    <Content Include="icons\icons8-user-groups-64.png" />
+    <Content Include="icons\lock.png" />
+    <Content Include="icons\login.png" />
+    <Content Include="icons\logout.png" />
+    <Content Include="icons\logout1.png" />
+    <Content Include="icons\menu-icon-8.png" />
+    <Content Include="icons\person-fill.svg" />
+    <Content Include="icons\Recherche.jpeg" />
+    <Content Include="icons\recherche.png" />
+    <Content Include="icons\refreche.png" />
+    <Content Include="icons\refresh.png" />
+    <Content Include="icons\refreshe.png" />
+    <Content Include="icons\refreshe1.png" />
+    <Content Include="icons\Save.png" />
+    <Content Include="icons\user.png" />
+    <Content Include="icons\view.png" />
+    <Content Include="icons\_icon_login.png" />
+    <Content Include="itextsharp.dll" />
+    <Content Include="JS\JavaScriptPageEtudiant.js" />
+    <Content Include="JS\JavaScriptPageHome.js" />
+    <Content Include="JS\JavaScriptPageProf.js" />
+    <Content Include="JS\jquery-3.6.0.min.js" />
+    <Content Include="JS\test.js" />
+    <Content Include="PageAdmin.aspx" />
+    <Content Include="PageChangerMotPasse.aspx" />
+    <Content Include="ContentEtudiant.aspx" />
+    <Content Include="ContentProfesseur.aspx" />
+    <Content Include="PageEtudiant.aspx" />
+    <Content Include="PageProf.aspx" />
+    <Content Include="PageProfesseur.aspx" />
+    <Content Include="PageProfesseurs.aspx" />
+    <Content Include="Style\back_page1.jpg" />
+    <Content Include="Style\StylePageEtudiant.css" />
+    <Content Include="Style\StylePageHome.css" />
+    <Content Include="Style\StylePageProf.css" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connection.cs" />
+    <Compile Include="ContentExameProf.aspx.cs">
+      <DependentUpon>ContentExameProf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentExameProf.aspx.designer.cs">
+      <DependentUpon>ContentExameProf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentModule.aspx.cs">
+      <DependentUpon>ContentModule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentModule.aspx.designer.cs">
+      <DependentUpon>ContentModule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPresenceProf.aspx.cs">
+      <DependentUpon>ContentPresenceProf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPresenceProf.aspx.designer.cs">
+      <DependentUpon>ContentPresenceProf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentSalle.aspx.cs">
+      <DependentUpon>ContentSalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentSalle.aspx.designer.cs">
+      <DependentUpon>ContentSalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentSeance.aspx.cs">
+      <DependentUpon>ContentSeance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentSeance.aspx.designer.cs">
+      <DependentUpon>ContentSeance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentSeanceProf.aspx.cs">
+      <DependentUpon>ContentSeanceProf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentSeanceProf.aspx.designer.cs">
+      <DependentUpon>ContentSeanceProf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentSectionGroup.aspx.cs">
+      <DependentUpon>ContentSectionGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentSectionGroup.aspx.designer.cs">
+      <DependentUpon>ContentSectionGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Etudiant.cs" />
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageAdmin.aspx.cs">
+      <DependentUpon>PageAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageAdmin.aspx.designer.cs">
+      <DependentUpon>PageAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageAdmin.Master.cs">
+      <DependentUpon>PageAdmin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageAdmin.Master.designer.cs">
+      <DependentUpon>PageAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PageChangerMotPasse.aspx.cs">
+      <DependentUpon>PageChangerMotPasse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageChangerMotPasse.aspx.designer.cs">
+      <DependentUpon>PageChangerMotPasse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentEtudiant.aspx.cs">
+      <DependentUpon>ContentEtudiant.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentEtudiant.aspx.designer.cs">
+      <DependentUpon>ContentEtudiant.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentProfesseur.aspx.cs">
+      <DependentUpon>ContentProfesseur.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentProfesseur.aspx.designer.cs">
+      <DependentUpon>ContentProfesseur.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEtudiant.aspx.cs">
+      <DependentUpon>PageEtudiant.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEtudiant.aspx.designer.cs">
+      <DependentUpon>PageEtudiant.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageProf.aspx.cs">
+      <DependentUpon>PageProf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageProf.aspx.designer.cs">
+      <DependentUpon>PageProf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageProfesseur.aspx.cs">
+      <DependentUpon>PageProfesseur.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageProfesseur.aspx.designer.cs">
+      <DependentUpon>PageProfesseur.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageProfesseur.Master.cs">
+      <DependentUpon>PageProfesseur.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageProfesseur.Master.designer.cs">
+      <DependentUpon>PageProfesseur.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PageProfesseurs.aspx.cs">
+      <DependentUpon>PageProfesseurs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageProfesseurs.aspx.designer.cs">
+      <DependentUpon>PageProfesseurs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Personne.cs" />
+    <Compile Include="Prof.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\bootstrap-grid.css.map" />
+    <Content Include="css\bootstrap-grid.min.css.map" />
+    <Content Include="css\bootstrap-grid.rtl.css.map" />
+    <Content Include="css\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="css\bootstrap-reboot.css.map" />
+    <Content Include="css\bootstrap-reboot.min.css.map" />
+    <Content Include="css\bootstrap-reboot.rtl.css.map" />
+    <Content Include="css\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="css\bootstrap-utilities.css.map" />
+    <Content Include="css\bootstrap-utilities.min.css.map" />
+    <Content Include="css\bootstrap-utilities.rtl.css.map" />
+    <Content Include="css\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="css\bootstrap.css.map" />
+    <Content Include="css\bootstrap.min.css.map" />
+    <Content Include="css\bootstrap.rtl.css.map" />
+    <Content Include="css\bootstrap.rtl.min.css.map" />
+    <None Include="packages.config" />
+    <Content Include="PageAdmin.Master" />
+    <Content Include="PageProfesseur.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53415</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44313/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

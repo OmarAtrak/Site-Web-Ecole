@@ -1,0 +1,562 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PageProfesseur.master.cs" Inherits="Ecoule.PageProfesseur1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Page Professeur</title>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <!--<link rel="stylesheet" href="Style/StylePageProf.css" />-->
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing:border-box;
+        }
+
+        body {
+            /*background: linear-gradient(to right, #7ce0ea, #71c6ce);*/
+            font-family: 'Roboto', sans-serif;
+            background-color: #e2e5a7;
+        }
+
+        /*menu pranciapale*/
+        nav {
+            height: 70px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            background-color: #0a1e70;
+            color: white;
+        }
+
+        nav > ul {
+            float: right;
+            height: 100%;
+            width: 79%;
+            text-align: right;
+        }
+
+        nav > ul > li {
+            display: inline-block;
+            margin-top: 20px;
+            margin-right: 50px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        nav > ul > li > a {
+            float: right;
+            transition: all 0.4s ease-in-out;
+        }
+
+        nav > ul > li > a:hover {
+            color: coral;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: white;
+        }
+
+        .content_profil > table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+
+        .tbl-header {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        .tbl-content {
+            height: 300px;
+            border: 1px solid rgba(255,255,255,0.3);
+            overflow-x: auto;
+        }
+
+        th {
+            padding: 20px 5px;
+            text-align: center;
+            font-weight: 400;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+            font-weight: 400;
+            font-size: 20px;
+            word-break: break-word;
+        }
+
+        .td_vide {
+            height:50px;
+        }
+
+        .profil {
+            float: left;
+            margin-top: 5px;
+            margin-left: 20px;
+            /*transform: rotate(90deg);*/
+            text-decoration: none;
+            color: white;
+            font-size: 32px;
+        }
+
+        .profil:hover {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .align {
+            text-align: center;
+            display: inline-block;
+            width: 85%;
+            height: 100%;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .list {
+            width: 100%;
+            margin: auto;
+            border: .4px solid rgba(0,0,0,0.4);
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0px;
+            left: -350px;
+            height: 100%;
+            width: 350px;
+            background: #130948;
+            transition: all 0.3s ease-in;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .sidebar > ul {
+            margin-top: 50px;
+            width: 100%;
+        }
+
+        .sidebar > ul > li {
+            text-align: center;
+            border-bottom: solid rgba(255,255,255,0.1);
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            transition: all 0.5s ease;
+            border-left: 3px solid #130948;
+        }
+
+        .sidebar > ul > li > a {
+            display: block;
+            height: 100%;
+            width: 100%;
+         }
+
+        .menu a {
+            cursor: pointer;
+        }
+
+        .sidebar > ul > li:hover {
+            background-color: rgba(23, 95, 215, 0.3);
+            border-left: 3px solid #00b7c3;
+        }
+
+        .sidebar span #exit {
+            font-size: 20px;
+            font-weight: 500;
+            margin: 10px;
+        }
+
+        .exit-menu {
+            float: right;
+        }
+
+        .lblemail {
+            border-radius: 65px;
+            margin: auto;
+            margin-top: 30px;
+            border: solid #00b7c3 2px;
+            border-left: none;
+            width: 85%;
+        }
+
+        .lblemail img {
+            margin-right: 10px;
+        }
+
+        .icon {
+            float: left;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        .btn_sidebar {
+            width: 100%;
+            height: 100%;
+            background-color: initial;
+            color: #fff;
+            border: none;
+            padding-left: 50px;
+            transform: translateY(-40px);
+            transition: all 0.3s ease-out;
+        }
+
+        .bg_sidebar {
+            position: absolute;
+            top: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            opacity: 0;
+            transition: opacity .7s;
+            transition-delay: .2s;
+        }
+
+        .content_profil, .content_mot_passe {
+            position: absolute;
+            top: -100%;
+            left: 7.5%;
+            width: 85%;
+            height: 400px;
+            background-color: white;
+            border-radius: 15px;
+            box-sizing: border-box;
+            padding: 10px;
+            transition: all .5s;
+            opacity: 0;
+        }
+
+        *:focus {
+            outline: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            border-radius: 5px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.25);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: #00b7c3;
+        }
+
+        .btns_sidebar{
+            width: 100%;
+            height: 100%;
+            background-color: initial;
+            color: #fff;
+            border: none;
+            padding-left: 50px;
+            transform: translateY(-40px);
+            transition: all 0.3s ease-out;
+        }
+
+        .btn_updatePassword {
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+            height: 50px;
+            background-color: #b7b7b5
+        }
+
+        h3 {
+            margin-top:100px;
+            margin-left:20px;
+        }
+
+        .content_Seance {
+            width:100%;
+            height:470px;
+            padding:5px;
+        }
+
+        .content_Seance label {
+            margin-left: 10px;
+        }
+
+        .tbl_ValideSeance {
+            border-radius:10px;
+            border:1px solid silver;
+            float:left;
+            width:27%;
+            height:400px;
+        }
+
+        .tbl_ValideSeance tr th {
+            border:none;
+        }
+
+        .tbl_ValideSeance tr td {
+            padding-top: 0px;
+            padding-bottom: 0px;
+            border:none;
+        }
+
+        #ListSeance {
+            float:right;
+            width:70%;
+        }
+
+        #ListSeance th {
+            font-size:18px;
+            font-weight:500;
+        }
+
+        #btnValiderSeance {
+            width:200px;
+            height:40px;
+            margin-top:20px;
+            margin-bottom:20px;
+        }
+        .lbl_choix {
+            margin-left:200px;
+            margin-right:20px;
+        }
+        .cmb_choix {
+            margin-top:20px;
+            margin-bottom:20px;
+        }
+        .list_view {
+            margin-top:20px;
+            margin-bottom:20px;
+            margin-left:100px;
+        }
+        .lbl_choix {
+            margin-left:200px;
+            margin-right:20px;
+        }
+        .lbl_choix2 {
+            margin-left:70px;
+            margin-right:10px;
+        }
+        .cmb_choix {
+            margin-top:20px;
+            margin-bottom:20px;
+        }
+        .list_view {
+            margin-top:20px;
+            margin-bottom:20px;
+            margin-left:100px;
+        }
+        #btnAjoutParticipant {
+            margin-left:20%;
+        }
+        .btnPresedent {
+            width:10%;
+            margin-left:30%;
+            margin-right:10px;
+            margin-top:10px;
+        }
+        #btnValiderNote{
+            width:10%;
+            margin-left:300px;
+            margin-right:10px;
+            margin-top:10px;
+        }
+        .btnSuivant {
+            width:10%;
+            margin-left:10px;
+            margin-top:10px;
+        }
+        .lbl_choixP {
+            padding-left:0px;
+            height:50px;
+            margin-left:120px;
+            margin-right:20px;
+        }
+        .btn_refreche {
+            margin-left: 75.7%;
+            margin-bottom: -75px;
+        }
+        .btn_pdf {
+            margin-left: 8%;
+            margin-bottom: -52px;
+        }
+        #deplacementPS {
+            display:inline;
+        }
+        .btnsOperation {
+            float:left;
+            margin-left:10px;
+            margin-bottom:20px;
+            width:100px;
+            height:30px;
+            color:white;
+            border:none;
+            border-radius:5px;
+        }
+        .btnAjout {
+            background-color:#1f631a;
+        }
+        .btnModifier {
+            background-color:rgb(178 215 42 / 1);
+        }
+        .btnSupprimer {
+            background-color:#d13e3e;
+        }
+        .btnInsialiser {
+            background-color:#837b7b;
+        }
+        #closeProfile {
+            float:right;
+            position:absolute;
+            left:96%;
+            top:-0.5%;
+            cursor:pointer;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <nav>
+            <ul>
+                <li><asp:LinkButton ID="btnSeance" runat="server" OnClick="btnSeance_Click">Seance</asp:LinkButton></li>
+                <li><asp:LinkButton ID="btnPresence" runat="server" OnClick="btnPresence_Click">Presence de Seance</asp:LinkButton></li>
+                <li><asp:LinkButton ID="btnExame" runat="server" OnClick="btnExame_Click">Exame</asp:LinkButton></li>
+            </ul>
+            <div id="bg_sidebar" runat="server" class="bg_sidebar"></div>
+            <div class="menu">
+                <a id="menu-btn" class="profil"><img src="icons/icons8-menu-49.png" width="50" /></a>
+                <div id="content-menu" class="sidebar">
+                    <span class="exit-menu"><a id="exit">X</a></span>
+                    <div class="lblemail"><img src="icons/user.png" height="30"/><asp:label ID="emailProf" runat="server"></asp:label></div>
+                    <ul>
+                        <li id="info"><a><img src="icons/login.png" class="icon" height="30"/>Profil</a></li>
+                        <li id="mot_passe"><img src="icons/lock.png" class="icon" height="30"/><asp:Button ID="btn_ChangerMotPasse" runat="server" Text="Changer Mot de Passe" CssClass="btns_sidebar" OnClick="btn_ChangerMotPasse_Click"/></li>
+                        <li><img class="icon" src="icons/logout.png" height="30"/><asp:Button id="btn_exit" runat="server" Text="Déconnecter" CssClass="btns_sidebar" OnClick="btn_exit_Click"/></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="content_profil" class="content_profil">
+            <img id="closeProfile" src="icons/icons8-close-64.png" title="Fermer" width="50" />
+            <table>
+                <tr>
+                    <th colspan="4">les information</th>
+                </tr>
+                <tr>
+                    <td class="right">Numero:</td>
+                    <td class="left"><asp:label ID="lblNumero" runat="server"></asp:label></td>
+                    <td class="right">Email:</td>
+                    <td class="left"><asp:label ID="lblEmail" runat="server"></asp:label></td>
+                </tr>
+                <tr>
+                    <td class="right">Nom:</td>
+                    <td class="left"><asp:label ID="lblNom" runat="server"></asp:label></td>
+                    <td class="right">Prenom:</td>
+                    <td class="left"><asp:label ID="lblPrenom" runat="server"></asp:label></td>
+                </tr>
+                <tr>
+                    <td class="right">Date de Naissance:</td>
+                    <td class="left"><asp:label ID="lblDateNaissance" runat="server"></asp:label></td>
+                    <td class="right">Module:</td>
+                    <td class="left"><asp:label ID="lblModule" runat="server"></asp:label></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <script>
+            let sidebar = document.getElementById("content-menu");
+            let profil = document.getElementById("info");
+            let mot_passe = document.getElementById("mot_passe");
+            let bg_sidebar = document.getElementById("bg_sidebar");
+            let content_profil = document.getElementById("content_profil");
+            let content_mot_passe = document.getElementById("content_mot_passe");
+            let tbl_info = document.getElementById("tbl_info");
+
+
+            function OpenSidebar() {
+                sidebar.style.left = "0px";
+            }
+            function CloseSidebar() {
+                sidebar.style.left = "-350px";
+            }
+            function ActiverOpacity_0() {
+                bg_sidebar.style.top = "-100%";
+                bg_sidebar.style.opacity = "0";
+                bg_sidebar.style.position = "absolute";
+            }
+            function ActiverOpacity_1() {
+                bg_sidebar.style.top = "0%";
+                bg_sidebar.style.opacity = "1";
+                bg_sidebar.style.position = "fixed";
+            }
+            function OpenContentProfile() {
+                content_profil.style.top = "10%";
+                content_profil.style.opacity = "1";
+                content_profil.style.position = "fixed";
+            }
+            function CloseContentProfile() {
+                content_profil.style.top = "-100%";
+                content_profil.style.opacity = "0";
+                content_profil.style.position = "absolute";
+            }
+
+            /**************************************for open sidebar**************************************/
+            document.getElementById("menu-btn").addEventListener("click", function () {
+                OpenSidebar();
+                ActiverOpacity_1();
+                CloseContentProfile();
+            });
+
+            /**************************************for close sidebar**************************************/
+            document.getElementById("exit").addEventListener("click", function () {
+                CloseSidebar();
+                ActiverOpacity_0();
+            });
+
+            /********************************************* for close content by profil and sidebar *********************************************/
+            document.getElementById("bg_sidebar").addEventListener("click", function () {
+                CloseSidebar();
+                ActiverOpacity_0();
+                CloseContentProfile();
+            });
+            document.getElementById("closeProfile").addEventListener("click", function () {
+                CloseSidebar();
+                ActiverOpacity_0();
+                CloseContentProfile();
+            });
+            /************************************* onclick btn profile for see the information *************************************/
+            profil.addEventListener("click", function () {
+                ActiverOpacity_1();
+                OpenContentProfile();
+                CloseSidebar();
+            });
+
+        </script>
+        <!--<script src="JS/JavaScriptPageEtudiant.js"></script>-->
+    </form>
+</body>
+</html>
